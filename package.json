@@ -4,6 +4,7 @@
   "description": "",
   "main": "greeter.js",
   "scripts": {
+    "start":"tsc && node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/zelzhan/new-sample-platform#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "@types/mocha": "^7.0.2",
+    "express": "^4.17.1",
+    "mocha": "^7.2.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.6"
