@@ -1,0 +1,25 @@
+{
+  "name": "new-sample-platform",
+  "version": "1.0.0",
+  "description": "",
+  "main": "greeter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zelzhan/new-sample-platform.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zelzhan/new-sample-platform/issues"
+  },
+  "homepage": "https://github.com/zelzhan/new-sample-platform#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.6"
+  }
+}
