@@ -1,8 +1,10 @@
 version: '3.1'
 
 services:
-    app:
+    sample-platform:
         image: 'sample-platform'
-        build: '.'
+        build: 
+            context: .
+            dockerfile: './apps/sample-platform/Dockerfile'
         ports:
             - 3000:80 
