@@ -72,5 +72,5 @@
     "@nrwl/node": "9.3.0",
     "@nestjs/schematics": "^6.7.0",
     "@nestjs/testing": "^6.8.3"
- }
+  }
 }
