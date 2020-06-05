@@ -18,7 +18,8 @@
     "paths": {
       "@new-sample-platform/api-interfaces": [
         "libs/api-interfaces/src/index.ts"
-      ]
+      ],
+      "@new-sample-platform/orchestration": ["libs/orchestration/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

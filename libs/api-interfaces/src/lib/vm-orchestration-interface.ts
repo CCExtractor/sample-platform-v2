@@ -2,7 +2,7 @@ import { VMInterface } from "./vm-interface";
 
 export interface VMOrchestrationInterface {
   
-  createMachine(): VMInterface;
+  createMachine(name: String): void;
   
   reset(): void;
   
