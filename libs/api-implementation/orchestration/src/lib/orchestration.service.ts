@@ -1,8 +1,10 @@
-import { VMOrchestrationInterface } from "../../../../api-interfaces/src/lib/vm-orchestration-interface"
-import { VMInterface } from "../../../../api-interfaces/src/lib/vm-interface";
+import { VMOrchestrationInterface } from "./interfaces/vm-orchestration-interface"
+import { VMInterface } from "../../../util/src/lib/Interfaces/vm-interface";
 import Compute from "@google-cloud/compute"
+import { Injectable } from "@nestjs/common";
 
-export class VMOrchestration implements VMOrchestrationInterface {
+@Injectable()
+export class VMOrchestrationService implements VMOrchestrationInterface {
     private compute;
     private zone;
     private machines: any [];

@@ -1,7 +1,9 @@
 {
   "extends": "../../tsconfig.json",
+  "allowJs" : true,
   "compilerOptions": {
+    "experimentalDecorators": true,
     "types": ["node", "jest"]
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "../util/src/lib/Interfaces/vm-interface.ts", "../util/src/lib/vm.ts"]
 }
