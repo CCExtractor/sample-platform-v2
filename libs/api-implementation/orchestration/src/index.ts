@@ -1,1 +1,1 @@
-export * from './lib/orchestration';
+export * from './lib/orchestration.module';

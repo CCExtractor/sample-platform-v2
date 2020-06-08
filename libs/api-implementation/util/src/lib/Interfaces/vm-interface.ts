@@ -1,4 +1,4 @@
-import { Status } from "./status-enum"
+import { Status } from "../../../../orchestration/src/lib/interfaces/status-enum"
 
 export interface VMInterface {
     //TODO: Add more methods. Maybe we should parse desc and

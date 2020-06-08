@@ -1,4 +1,4 @@
-import { VMInterface } from "./vm-interface";
+import { VMInterface } from "../../../../util/src/lib/Interfaces/vm-interface";
 
 export interface VMOrchestrationInterface {
   

@@ -16,10 +16,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@new-sample-platform/api-interfaces": [
-        "libs/api-interfaces/src/index.ts"
-      ],
-      "@new-sample-platform/orchestration": ["libs/orchestration/src/index.ts"]
+      "@new-sample-platform/orchestration": ["libs/api-implementation/orchestration/src/index.ts"],
+      "@new-sample-platform/api-implementation/util": [
+        "libs/api-implementation/util/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
