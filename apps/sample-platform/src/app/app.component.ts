@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@new-sample-platform/api-interfaces';
 
 @Component({
   selector: 'new-sample-platform-root',
@@ -8,6 +7,6 @@ import { Message } from '@new-sample-platform/api-interfaces';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
+  hello$ = this.http.get<string>('/api/');
   constructor(private http: HttpClient) {}
 }

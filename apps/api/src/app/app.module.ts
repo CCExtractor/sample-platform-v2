@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { VMOrchestrationModule } from '../../../../libs/api-implementation/orchestration/src';
 
 @Module({
-  imports: [],
+  imports: [VMOrchestrationModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule {}
