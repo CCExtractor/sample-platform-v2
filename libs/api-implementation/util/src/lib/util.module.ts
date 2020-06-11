@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { VMService } from './vm.impl';
+import { VM } from './vm.impl';
 
 @Module({
   controllers: [],
-  providers: [VMService],
+  providers: [VM],
 })
 export class UtilsModule { }

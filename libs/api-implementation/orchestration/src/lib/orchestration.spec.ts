@@ -1,5 +1,4 @@
 import { VMOrchestrationService } from './orchestration.service'
-import Compute from '@google-cloud/compute'
 import { CreateMachineDTO } from './dto/create-machine.dto';
 
 describe('Orchestration service', () => {
