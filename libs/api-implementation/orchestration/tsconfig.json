@@ -1,9 +1,9 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../../tsconfig.json",
   "allowJs" : true,
   "compilerOptions": {
     "experimentalDecorators": true,
     "types": ["node", "jest"]
   },
-  "include": ["**/*.ts", "../util/src/lib/Interfaces/vm-interface.ts", "../util/src/lib/vm.ts"]
+  "include": ["**/*.ts", "../util/src/lib/Interfaces/vm-interface.ts", "../util/src/lib/vm.ts", "../util/src/lib/Interfaces/status-enum.ts"]
 }
