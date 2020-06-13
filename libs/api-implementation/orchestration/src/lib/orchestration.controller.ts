@@ -4,7 +4,7 @@ import { CreateMachineDTO } from './dto/create-machine.dto'
 
 @Controller('machine')
 export class VMOrchestrationController {
-  constructor(private orchestrationService : VMOrchestrationService) {}
+  constructor(private orchestrationService: VMOrchestrationService) { }
   
   @Post('create')
   async createMachine(@Body() createMachineDTO: CreateMachineDTO) {
@@ -12,8 +12,8 @@ export class VMOrchestrationController {
       await this.orchestrationService.createMachine(createMachineDTO.name)
       return `Machine ${createMachineDTO.name} successfuly created`
     } catch (error) {
-      console.error(error)
-      throw new InternalServerErrorException()
+      console.error(error);
+      throw (error)
     }
   }
 }

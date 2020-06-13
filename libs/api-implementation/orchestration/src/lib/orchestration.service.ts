@@ -19,8 +19,8 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
     private runningMachines: VM[];
     private numOfTotalInstances: number;
 
-    constructor() {
-        this.compute = new Compute();
+    constructor(compute: Compute) {
+        this.compute = compute;
         this.zone = this.compute.zone('us-central1-c');
         this.numOfTotalInstances = 0;
         this.runningMachines = [];
@@ -34,7 +34,7 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
             this.numOfTotalInstances++;
             console.log("Created the following machine: \n" + operation.metadata)
         } catch (error) {
-            throwError(error);
+            throw(error)
         }
     }
     
