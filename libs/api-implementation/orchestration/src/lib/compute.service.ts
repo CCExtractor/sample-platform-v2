@@ -9,7 +9,7 @@ export class Compute {
     this.compute = new CloudCompute;
   }
 
-  zone() {
-    return this.compute.zone()
+  zone(zone: string) {
+    return this.compute.zone(zone)
   }    
 }

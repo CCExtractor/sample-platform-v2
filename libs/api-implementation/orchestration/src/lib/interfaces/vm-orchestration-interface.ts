@@ -12,7 +12,6 @@ export interface VMOrchestrationInterface {
   
   deleteMachine(name: string): void;
   
-
   getNumberOfRunningInstances(): number 
 
   getNumberOfTotalInstances(): number

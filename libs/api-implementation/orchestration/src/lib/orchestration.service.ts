@@ -2,22 +2,20 @@
 // TODO: encapsulate the logic inside of methods
 import { VMOrchestrationInterface } from "./interfaces/vm-orchestration-interface";
 import { VMInterface } from "../../../util/src/lib/interfaces/vm-interface";
-import * as Compute from "@google-cloud/compute";
+import { Compute}  from "./compute.service";
 import { Injectable } from "@nestjs/common";
 import { HashTable } from "../../../util/src/lib/interfaces/hashtable-interface";
 import { VM } from "../../../util/src/lib/vm.impl";
 import { Status } from "../../../util/src/lib/interfaces/status-enum";
-import { throwError } from 'rxjs';
-
 
 @Injectable()
 export class VMOrchestrationService implements VMOrchestrationInterface {
     
     private compute;
-    private zone;
     private machines: HashTable<VM>;
     private runningMachines: VM[];
     private numOfTotalInstances: number;
+    private zone;
 
     constructor(compute: Compute) {
         this.compute = compute;
@@ -30,19 +28,17 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
     async createMachine(name: string) {
         try {
             const [vm, operation] = await this.createVM(name);
-            this.runningMachines.push(this.machines[name]);
+            this.runningMachines.push(vm);
             this.numOfTotalInstances++;
             console.log("Created the following machine: \n" + operation.metadata)
         } catch (error) {
-            throw(error)
+            throw (error);
         }
     }
     
-    private async createVM(name) {
+    public async createVM(name: string) {
         let vm, operation;
-        if (process.env.NODE_ENV != 'test') {
-            [vm, operation] = await this.zone.createVM(name, { os: 'ubuntu' });
-        }
+        [vm, operation] = await this.zone.createVM(name, { os: 'ubuntu' });
         this.machines[name] = new VM(name, Status.Running, vm);
         return [this.machines[name], operation]    
     }
@@ -52,7 +48,7 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
             const response = await this.machines[name].getInstance().reset();
             console.log(response);
         } catch (error) {
-            console.error(error)
+            throw (error);
         }
     }
 
@@ -62,7 +58,7 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
             this.runningMachines.push(this.machines[name]);
             console.log(response);
         } catch (error) {
-            console.error(error)   
+            throw (error);
         }
     }
     async stop(name: string) {
@@ -74,7 +70,7 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
             }
             console.log(response);
         } catch (error) {
-            console.error(error)
+            throw (error);
         }
     }
     async deleteMachine(name: string) {
@@ -87,7 +83,7 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
             const response = await this.machines[name].getInstance().delete();
             console.log(response);
         } catch (error) {
-            console.error(error)
+            throw (error);
         }
     }
     getNumberOfRunningInstances(): number {
