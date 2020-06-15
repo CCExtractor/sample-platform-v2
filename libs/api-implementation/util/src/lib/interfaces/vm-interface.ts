@@ -1,4 +1,4 @@
-import { Status } from "../../../../orchestration/src/lib/interfaces/status-enum"
+import { Status } from "./status-enum"
 
 export interface VMInterface {
     describe(): String;

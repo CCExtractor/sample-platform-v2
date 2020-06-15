@@ -7,7 +7,7 @@
     "nx": "nx",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "env NODE_ENV=test && ng test ",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
     "affected:apps": "nx affected:apps",
@@ -44,6 +44,7 @@
     "@nestjs/platform-express": "^6.8.3",
     "@nrwl/angular": "9.3.0",
     "core-js": "^2.5.4",
+    "mongodb": "^3.5.8",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",
     "zone.js": "^0.10.2"

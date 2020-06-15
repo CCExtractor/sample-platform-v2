@@ -1,4 +1,4 @@
-import { VMInterface } from "../../../../util/src/lib/Interfaces/vm-interface";
+import { VMInterface } from "../../../../util/src/lib/interfaces/vm-interface";
 
 export interface VMOrchestrationInterface {
   
@@ -12,7 +12,6 @@ export interface VMOrchestrationInterface {
   
   deleteMachine(name: string): void;
   
-
   getNumberOfRunningInstances(): number 
 
   getNumberOfTotalInstances(): number

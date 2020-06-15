@@ -29,13 +29,13 @@
     "api": {
       "tags": []
     },
-    "api-interfaces": {
-      "tags": []
-    },
     "orchestration": {
       "tags": []
     },
     "api-implementation-util": {
+      "tags": []
+    },
+    "testing": {
       "tags": []
     }
   }

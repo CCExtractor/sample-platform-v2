@@ -1,19 +1,19 @@
-import { Controller, Get, Post, Param, InternalServerErrorException } from '@nestjs/common';
+import { Controller, Get, Post, Param, InternalServerErrorException, Body } from '@nestjs/common';
 import { VMOrchestrationService } from './orchestration.service';
 import { CreateMachineDTO } from './dto/create-machine.dto'
 
 @Controller('machine')
 export class VMOrchestrationController {
-  constructor(private orchestrationService : VMOrchestrationService) {}
+  constructor(private orchestrationService: VMOrchestrationService) { }
   
-  @Post('create/:name')
-  async createMachine(createMachine: CreateMachineDTO) {
+  @Post('create')
+  async createMachine(@Body() createMachineDTO: CreateMachineDTO) {
     try {
-      await this.orchestrationService.createMachine(name)
-      return `Machine ${name} successfuly created`
+      await this.orchestrationService.createMachine(createMachineDTO.name)
+      return `Machine ${createMachineDTO.name} successfuly created`
     } catch (error) {
-      console.error(error)
-      throw new InternalServerErrorException()
+      console.error(error);
+      throw (error)
     }
   }
 }

@@ -1,5 +1,6 @@
-import { VMInterface } from "./Interfaces/vm-interface";
-import { Status } from "../../../orchestration/src/lib/interfaces/status-enum";
+import { VMInterface } from "./interfaces/vm-interface";
+import { Status } from "./interfaces/status-enum";
+import { performance } from 'perf_hooks';
 
 export class VM implements VMInterface {
 
