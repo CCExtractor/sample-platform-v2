@@ -37,6 +37,9 @@
     },
     "testing": {
       "tags": []
+    },
+    "github-interactions-api": {
+      "tags": []
     }
   }
 }
