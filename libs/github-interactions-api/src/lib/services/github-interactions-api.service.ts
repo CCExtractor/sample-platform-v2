@@ -10,6 +10,16 @@ import { AppConfig } from '../../../../../config';
 @Injectable()
 export class GithubInteractionsApiService {
   async getArtifact() {
+    try {
+      await this.downloadArtifact();
+    } catch (error) {
+      console.error("Error occured while downloading the artifact");
+      // tslint:disable-next-line: no-console
+      console.debug(error.stack)
+    }
+  }
+  
+  private async downloadArtifact() {
     const auth = await this.authenticate();
     const { token } = await auth({ type: 'installation' });
     const res = JSON.parse(
@@ -33,7 +43,7 @@ export class GithubInteractionsApiService {
       })
       .pipe(file);
   }
-  
+
   getData(): { message: string } {
     return { message: 'Welcome to github-interactions-api!' };
   }
