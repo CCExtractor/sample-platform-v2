@@ -1,5 +1,3 @@
-// TODO: parse errors properly
-// TODO: encapsulate the logic inside of methods
 import { VMOrchestrationInterface } from '../interfaces/vm-orchestration-interface';
 import { VMInterface } from '../../../../util/src/lib/interfaces/vm-interface';
 import { Compute } from './compute.service';
@@ -7,6 +5,7 @@ import { Injectable } from '@nestjs/common';
 import { HashTable } from '../../../../util/src/lib/interfaces/hashtable-interface';
 import { VM } from '../../../../util/src/lib/vm.impl';
 import { Status } from '../../../../util/src/lib/interfaces/status-enum';
+import { AppConfig } from '../../../../../../config'
 import * as fs from 'fs';
 import * as doAsync from 'doasync';
 import * as path from 'path'; 
@@ -49,7 +48,8 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
   private async getConfigFile() {
     
     const script = await doAsync(fs).readFile(
-      path.resolve(__dirname, `../../../script.sh`)
+      //TODO make it more flexible
+      path.resolve(__dirname, `../../../${AppConfig.EXECUTABLE_SCRIPT}`)
     );
 
     return {
@@ -110,8 +110,7 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
         this.runningMachines.splice(index, 1);
       }
       this.numOfTotalInstances--;
-      const response = await this.machines[name].getInstance().delete();
-      console.log(response);
+      await this.machines[name].getInstance().delete();
     } catch (error) {
       console.error(`Error occured while deleting the machine ${name}`);
       console.debug(error.stack)

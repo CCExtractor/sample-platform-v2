@@ -6,6 +6,7 @@ import * as request from 'request-promise';
 import * as path from 'path';
 
 import { AppConfig } from '../../../../../config';
+import { SecretConfig } from '../../../../../secret-config';
 
 @Injectable()
 export class GithubInteractionsApiService {
@@ -13,29 +14,29 @@ export class GithubInteractionsApiService {
     try {
       await this.downloadArtifact();
     } catch (error) {
-      console.error("Error occured while downloading the artifact");
+      console.error('Error occured while downloading the artifact');
       // tslint:disable-next-line: no-console
-      console.debug(error.stack)
+      console.debug(error.stack);
     }
   }
-  
+
   private async downloadArtifact() {
     const auth = await this.authenticate();
     const { token } = await auth({ type: 'installation' });
     const res = JSON.parse(
       await request.get({
-        uri:
-          'https://api.github.com/repos/zelzhan/ccextractor/actions/artifacts',
+        uri: `${AppConfig.GITHUB_API_LINK}/repos/${AppConfig.CCEXTRACTOR_REPO_OWNER}/${AppConfig.CCEXTRACTOR_REPO_NAME}/actions/artifacts`,
         headers: {
           authorization: 'token ' + token,
           'User-Agent': 'request',
         },
       })
     );
+
     const file = fs.createWriteStream('linux.zip');
     request
       .get({
-        uri: `https://api.github.com/repos/zelzhan/ccextractor/actions/artifacts/${res.artifacts[0].id}/zip`,
+        uri: `${AppConfig.GITHUB_API_LINK}/repos/${AppConfig.CCEXTRACTOR_REPO_OWNER}/${AppConfig.CCEXTRACTOR_REPO_NAME}/actions/artifacts/${res.artifacts[0].id}/zip`,
         headers: {
           authorization: 'token ' + token,
           'User-Agent': 'request',
@@ -50,16 +51,15 @@ export class GithubInteractionsApiService {
 
   private async authenticate() {
     const secret = await doAsync(fs).readFile(
-      path.resolve(__dirname, `../../../${AppConfig.NAME_OF_GITHUB_APP_PRIVATE_KEY}`)
+      path.resolve(__dirname, `../../../${AppConfig.GITHUB_APP_PRIVATE_KEY}`)
     );
 
     return createAppAuth({
-      id: AppConfig.GITHUB_APP_ID as number,
+      id: SecretConfig.GITHUB_APP_ID as number,
       privateKey: secret,
-      installationId: AppConfig.GITHUB_APP_INSTALLATION_ID as number,
-      clientId: AppConfig.GITHUB_APP_CLIENT_ID as string,
-      clientSecret: AppConfig.GITHUB_APP_CLIENT_SECRET as string,
+      installationId: SecretConfig.GITHUB_APP_INSTALLATION_ID as number,
+      clientId: SecretConfig.GITHUB_APP_CLIENT_ID as string,
+      clientSecret: SecretConfig.GITHUB_APP_CLIENT_SECRET as string,
     });
-
   }
 }
