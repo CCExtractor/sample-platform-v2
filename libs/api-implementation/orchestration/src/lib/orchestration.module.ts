@@ -9,4 +9,5 @@ import { Compute } from './compute.service';
   controllers: [VMOrchestrationController],
   providers: [VMOrchestrationService, Compute],
 })
+  
 export class VMOrchestrationModule { }

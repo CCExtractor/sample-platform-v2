@@ -44,11 +44,11 @@ export class AppService {
     );
 
     return createAppAuth({
-      id: AppConfig.GITHUB_APP_ID,
+      id: AppConfig.GITHUB_APP_ID as number,
       privateKey: secret,
-      installationId: AppConfig.GITHUB_APP_INSTALLATION_ID,
-      clientId: AppConfig.GITHUB_APP_CLIENT_ID,
-      clientSecret: AppConfig.GITHUB_APP_CLIENT_SECRET,
+      installationId: AppConfig.GITHUB_APP_INSTALLATION_ID as number,
+      clientId: AppConfig.GITHUB_APP_CLIENT_ID as string,
+      clientSecret: AppConfig.GITHUB_APP_CLIENT_SECRET as string,
     });
 
   }
