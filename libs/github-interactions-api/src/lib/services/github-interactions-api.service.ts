@@ -5,10 +5,10 @@ import * as doAsync from 'doasync';
 import * as request from 'request-promise';
 import * as path from 'path';
 
-import { AppConfig } from '../../../../config';
+import { AppConfig } from '../../../../../config';
 
 @Injectable()
-export class AppService {
+export class GithubInteractionsApiService {
   async getArtifact() {
     const auth = await this.authenticate();
     const { token } = await auth({ type: 'installation' });

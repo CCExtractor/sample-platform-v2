@@ -22,7 +22,10 @@
       "@new-sample-platform/api-implementation/util": [
         "libs/api-implementation/util/src/index.ts"
       ],
-      "@new-sample-platform/testing": ["libs/testing/src/index.ts"]
+      "@new-sample-platform/testing": ["libs/testing/src/index.ts"],
+      "@new-sample-platform/github-interactions-api": [
+        "libs/github-interactions-api/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

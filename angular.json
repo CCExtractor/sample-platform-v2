@@ -263,10 +263,9 @@
       "schematics": {}
     },
     "github-interactions-api": {
-      "root": "apps/github-interactions-api",
-      "sourceRoot": "apps/github-interactions-api/src",
-      "projectType": "application",
-      "prefix": "github-interactions-api",
+      "root": "libs/github-interactions-api",
+      "sourceRoot": "libs/github-interactions-api/src",
+      "projectType": "library",
       "schematics": {},
       "architect": {
         "build": {
@@ -274,8 +273,7 @@
           "options": {
             "outputPath": "dist/apps/github-interactions-api",
             "main": "apps/github-interactions-api/src/main.ts",
-            "tsConfig": "apps/github-interactions-api/tsconfig.app.json",
-            "assets": ["apps/github-interactions-api/src/assets"]
+            "tsConfig": "apps/github-interactions-api/tsconfig.app.json"
           },
           "configurations": {
             "production": {
@@ -301,20 +299,20 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/github-interactions-api/tsconfig.app.json",
-              "apps/github-interactions-api/tsconfig.spec.json"
+              "libs/github-interactions-api/tsconfig.lib.json",
+              "libs/github-interactions-api/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!apps/github-interactions-api/**"
+              "!libs/github-interactions-api/**"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/github-interactions-api/jest.config.js",
-            "tsConfig": "apps/github-interactions-api/tsconfig.spec.json",
+            "jestConfig": "libs/github-interactions-api/jest.config.js",
+            "tsConfig": "libs/github-interactions-api/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }

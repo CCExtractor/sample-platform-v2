@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { GithubInteractionsApiModule } from '../../../../libs/github-interactions-api/src'
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [GithubInteractionsApiModule],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
