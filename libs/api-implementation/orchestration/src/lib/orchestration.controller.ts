@@ -1,5 +1,5 @@
-import { Controller, Get, Post, Param, InternalServerErrorException, Body } from '@nestjs/common';
-import { VMOrchestrationService } from './orchestration.service';
+import { Controller, Post, Body } from '@nestjs/common';
+import { VMOrchestrationService } from './services/orchestration.service';
 import { CreateMachineDTO } from './dto/create-machine.dto'
 
 @Controller('machine')

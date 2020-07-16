@@ -1,13 +1,13 @@
 // TODO: parse errors properly
 // TODO: encapsulate the logic inside of methods
-import { VMOrchestrationInterface } from './interfaces/vm-orchestration-interface';
-import { VMInterface } from '../../../util/src/lib/interfaces/vm-interface';
+import { VMOrchestrationInterface } from '../interfaces/vm-orchestration-interface';
+import { VMInterface } from '../../../../util/src/lib/interfaces/vm-interface';
 import { Compute } from './compute.service';
 import { Injectable } from '@nestjs/common';
-import { HashTable } from '../../../util/src/lib/interfaces/hashtable-interface';
-import { VM } from '../../../util/src/lib/vm.impl';
-import { Status } from '../../../util/src/lib/interfaces/status-enum';
-import { AppConfig } from '../../../../../config';
+import { HashTable } from '../../../../util/src/lib/interfaces/hashtable-interface';
+import { VM } from '../../../../util/src/lib/vm.impl';
+import { Status } from '../../../../util/src/lib/interfaces/status-enum';
+import { AppConfig } from '../../../../../../config';
 import * as fs from 'fs';
 import * as doAsync from 'doasync';
 import * as path from 'path';

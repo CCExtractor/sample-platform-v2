@@ -1,7 +1,7 @@
-import { VMOrchestrationService } from './orchestration.service'
+import { VMOrchestrationService } from './services/orchestration.service'
 import { CreateMachineDTO } from './dto/create-machine.dto';
 import { instantiateMocked } from '../../../../testing/src/lib/testing.util'
-import { Compute } from './compute.service';
+import { Compute } from './services/compute.service';
 
 
 describe('Orchestration service', () => {
