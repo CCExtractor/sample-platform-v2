@@ -1,6 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 
 import { AppService } from './app.service';
+import { STATUS_CODES } from 'http';
 
 
 @Controller()
@@ -9,8 +10,9 @@ export class AppController {
   
 
   @Get('/latest-linux-artifact')
-  getArtifact() {
-    this.appService.getArtifact();
+  async getArtifact() {
+    await this.appService.getArtifact();
+    return "OK";
   }
 
   @Get()
