@@ -1,16 +1,16 @@
 import { Test } from '@nestjs/testing';
 
-import { AppService } from './app.service';
+import { GithubInteractionsApiService } from './github-interactions-api.service';
 
 describe('AppService', () => {
-  let service: AppService;
+  let service: GithubInteractionsApiService;
 
   beforeAll(async () => {
     const app = await Test.createTestingModule({
-      providers: [AppService],
+      providers: [GithubInteractionsApiService],
     }).compile();
 
-    service = app.get<AppService>(AppService);
+    service = app.get<GithubInteractionsApiService>(GithubInteractionsApiService);
   });
 
   describe('getData', () => {

@@ -1,21 +1,21 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { GithubInteractionsApiController } from './github-interactions-api.controller';
+import { GithubInteractionsApiService } from './services/github-interactions-api.service';
 
 describe('AppController', () => {
   let app: TestingModule;
 
   beforeAll(async () => {
     app = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
+      controllers: [GithubInteractionsApiController],
+      providers: [GithubInteractionsApiService],
     }).compile();
   });
 
   describe('getData', () => {
     it('should return "Welcome to github-interactions-api!"', () => {
-      const appController = app.get<AppController>(AppController);
+      const appController = app.get<GithubInteractionsApiController>(GithubInteractionsApiController);
       expect(appController.getData()).toEqual({
         message: 'Welcome to github-interactions-api!',
       });
