@@ -4,5 +4,5 @@
     "types": ["node", "jest"],
     "target": "es6"
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts", "../../config.ts"]
 }

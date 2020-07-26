@@ -8,7 +8,11 @@ export class VMOrchestrationController {
 
   @Post('create')
   async createMachine(@Body() createMachineDTO: CreateMachineDTO) {
-    await this.orchestrationService.createMachine(createMachineDTO.name);
-    return `Machine ${createMachineDTO.name} successfuly created`;
+    try {
+      await this.orchestrationService.createMachine(createMachineDTO.name);
+      return `Machine ${createMachineDTO.name} successfuly created`;
+    } catch (error) {
+      return `Error while creating the machine`
+    }
   }
 }
