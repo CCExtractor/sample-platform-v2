@@ -1,13 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { DatabaseConnectionService } from '../../../../database/src/lib/services/connection.service'
+import { RegressionTestModel } from '../../../../models/regression-tests/regression-test.models';
 
 @Injectable()
-export class Compute {
-
-  constructor(private database: DatabaseConnectionService) { }
-  
-  get() {
-    
+export class RegressionTestService {
+  async getAll() {
+    return await RegressionTestModel.find({});
   }
 
+  async create(new_command: string) {
+    return await RegressionTestModel.create({
+      command: new_command,
+    });
+  }
 }
