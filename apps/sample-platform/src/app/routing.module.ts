@@ -7,7 +7,7 @@ import {
 
 const routes: Routes = [
   {
-    path: 'hi',
+    path: 'tests',
     loadChildren: () =>
       import('@new-sample-platform/frontend/regression-test').then(
         (mod) => mod.FrontendRegressionTestModule
