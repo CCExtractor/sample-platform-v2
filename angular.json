@@ -373,61 +373,6 @@
         }
       }
     },
-    "database": {
-      "root": "apps/database",
-      "sourceRoot": "apps/database/src",
-      "projectType": "application",
-      "prefix": "database",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "options": {
-            "outputPath": "dist/apps/database",
-            "main": "apps/database/src/main.ts",
-            "tsConfig": "apps/database/tsconfig.app.json",
-            "assets": ["apps/database/src/assets"]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/database/src/environments/environment.ts",
-                  "with": "apps/database/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "database:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/database/tsconfig.app.json",
-              "apps/database/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/database/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/database/jest.config.js",
-            "tsConfig": "apps/database/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "api-implementation-database": {
       "root": "libs/api-implementation/database",
       "sourceRoot": "libs/api-implementation/database/src",

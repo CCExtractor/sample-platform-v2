@@ -31,12 +31,12 @@
       "tags": [],
       "implicitDependencies": [
         "github-interactions-api-implementation",
-        "database"
+        "api-implementation-database"
       ]
     },
     "api": {
       "tags": [],
-      "implicitDependencies": ["database"]
+      "implicitDependencies": ["api-implementation-database"]
     },
     "orchestration": {
       "tags": []
@@ -51,9 +51,6 @@
       "tags": []
     },
     "api-implementation-xml": {
-      "tags": []
-    },
-    "database": {
       "tags": []
     },
     "api-implementation-database": {
