@@ -401,6 +401,35 @@
           }
         }
       }
+    },
+    "api-implementation-regression-tests": {
+      "root": "libs/api-implementation/regression-tests",
+      "sourceRoot": "libs/api-implementation/regression-tests/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api-implementation/regression-tests/tsconfig.lib.json",
+              "libs/api-implementation/regression-tests/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-implementation/regression-tests/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api-implementation/regression-tests/jest.config.js",
+            "tsConfig": "libs/api-implementation/regression-tests/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
