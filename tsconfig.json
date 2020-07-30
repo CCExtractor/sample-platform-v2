@@ -25,6 +25,9 @@
       "@new-sample-platform/testing": ["libs/testing/src/index.ts"],
       "@new-sample-platform/github-interactions-api": [
         "libs/github-interactions-api/src/index.ts"
+      ],
+      "@new-sample-platform/api-implementation/xml": [
+        "libs/api-implementation/xml/src/index.ts"
       ]
     }
   },
