@@ -18,8 +18,10 @@ export const connect = () => {
   database.once("open", async () => {
     console.log("Connected to database");
   });
-  database.on("error", () => {
+  database.on("error", (err) => {
     console.log("Error connecting to database");
+    // tslint:disable-next-line: no-console
+    console.debug(err.stack)
   });
 };
 
