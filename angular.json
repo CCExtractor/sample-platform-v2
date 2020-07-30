@@ -176,6 +176,62 @@
         }
       }
     },
+    "github-interactions-api": {
+      "root": "apps/github-interactions-api",
+      "sourceRoot": "apps/github-interactions-api/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/github-interactions-api",
+            "main": "apps/github-interactions-api/src/main.ts",
+            "tsConfig": "apps/github-interactions-api/tsconfig.app.json"
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/github-interactions-api/src/environments/environment.ts",
+                  "with": "apps/github-interactions-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "github-interactions-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/github-interactions-api/tsconfig.lib.json",
+              "apps/github-interactions-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/github-interactions-api/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/github-interactions-api/jest.config.js",
+            "tsConfig": "apps/github-interactions-api/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "orchestration": {
       "root": "libs/api-implementation/orchestration",
       "sourceRoot": "libs/api-implementation/orchestration/src",
@@ -262,57 +318,30 @@
       },
       "schematics": {}
     },
-    "github-interactions-api": {
-      "root": "libs/github-interactions-api",
-      "sourceRoot": "libs/github-interactions-api/src",
+    "github-interactions-api-implementation": {
+      "root": "libs/github-interactions-api-implementation",
+      "sourceRoot": "libs/github-interactions-api-implementation/src",
       "projectType": "library",
       "schematics": {},
       "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "options": {
-            "outputPath": "dist/apps/github-interactions-api",
-            "main": "apps/github-interactions-api/src/main.ts",
-            "tsConfig": "apps/github-interactions-api/tsconfig.app.json"
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/github-interactions-api/src/environments/environment.ts",
-                  "with": "apps/github-interactions-api/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "github-interactions-api:build"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/github-interactions-api/tsconfig.lib.json",
-              "libs/github-interactions-api/tsconfig.spec.json"
+              "libs/github-interactions-api-implementation/tsconfig.lib.json",
+              "libs/github-interactions-api-implementation/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**",
-              "!libs/github-interactions-api/**"
+              "!libs/github-interactions-api-implementation/**"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/github-interactions-api/jest.config.js",
-            "tsConfig": "libs/github-interactions-api/tsconfig.spec.json",
+            "jestConfig": "libs/github-interactions-api-implementation/jest.config.js",
+            "tsConfig": "libs/github-interactions-api-implementation/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }

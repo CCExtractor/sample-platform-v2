@@ -26,6 +26,10 @@
       "tags": [],
       "implicitDependencies": ["sample-platform"]
     },
+    "github-interactions-api": {
+      "tags": [],
+      "implicitDependencies": ["github-interactions-api-implementation"]
+    },
     "api": {
       "tags": []
     },
@@ -38,7 +42,7 @@
     "testing": {
       "tags": []
     },
-    "github-interactions-api": {
+    "github-interactions-api-implementation": {
       "tags": []
     },
     "api-implementation-xml": {
