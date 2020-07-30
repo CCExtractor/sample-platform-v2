@@ -4,7 +4,6 @@ services:
     mongo:
         
         image: mongo:4.2.6
-        env_file: .env
         ports:
         - '27017:27017'
         volumes:

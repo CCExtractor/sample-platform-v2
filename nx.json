@@ -20,7 +20,10 @@
   },
   "projects": {
     "sample-platform": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": [
+        "api"
+      ]
     },
     "sample-platform-e2e": {
       "tags": [],
@@ -28,10 +31,14 @@
     },
     "github-interactions-api": {
       "tags": [],
-      "implicitDependencies": ["github-interactions-api-implementation"]
+      "implicitDependencies": [
+        "github-interactions-api-implementation",
+        "database"
+      ]
     },
     "api": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["database"]
     },
     "orchestration": {
       "tags": []
@@ -46,6 +53,9 @@
       "tags": []
     },
     "api-implementation-xml": {
+      "tags": []
+    },
+    "database": {
       "tags": []
     }
   }

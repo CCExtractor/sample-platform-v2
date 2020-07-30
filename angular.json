@@ -21,7 +21,9 @@
               "apps/sample-platform/src/favicon.ico",
               "apps/sample-platform/src/assets"
             ],
-            "styles": ["apps/sample-platform/src/styles.css"],
+            "styles": [
+              "apps/sample-platform/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -80,7 +82,10 @@
               "apps/sample-platform/tsconfig.app.json",
               "apps/sample-platform/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/sample-platform/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/sample-platform/**"
+            ]
           }
         },
         "test": {
@@ -115,8 +120,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/sample-platform-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/sample-platform-e2e/**"]
+            "tsConfig": [
+              "apps/sample-platform-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/sample-platform-e2e/**"
+            ]
           }
         }
       }
@@ -134,7 +144,9 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"]
+            "assets": [
+              "apps/api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -163,7 +175,10 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/api/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/api/**"
+            ]
           }
         },
         "test": {
@@ -303,7 +318,10 @@
               "libs/testing/tsconfig.lib.json",
               "libs/testing/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/testing/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/testing/**"
+            ]
           }
         },
         "test": {
@@ -360,7 +378,10 @@
               "libs/api-implementation/xml/tsconfig.lib.json",
               "libs/api-implementation/xml/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/api-implementation/xml/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-implementation/xml/**"
+            ]
           }
         },
         "test": {
@@ -368,6 +389,66 @@
           "options": {
             "jestConfig": "libs/api-implementation/xml/jest.config.js",
             "tsConfig": "libs/api-implementation/xml/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "database": {
+      "root": "apps/database",
+      "sourceRoot": "apps/database/src",
+      "projectType": "application",
+      "prefix": "database",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/database",
+            "main": "apps/database/src/main.ts",
+            "tsConfig": "apps/database/tsconfig.app.json",
+            "assets": [
+              "apps/database/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/database/src/environments/environment.ts",
+                  "with": "apps/database/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "database:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/database/tsconfig.app.json",
+              "apps/database/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/database/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/database/jest.config.js",
+            "tsConfig": "apps/database/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
