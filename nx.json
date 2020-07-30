@@ -21,9 +21,7 @@
   "projects": {
     "sample-platform": {
       "tags": [],
-      "implicitDependencies": [
-        "api"
-      ]
+      "implicitDependencies": ["api"]
     },
     "sample-platform-e2e": {
       "tags": [],
@@ -56,6 +54,9 @@
       "tags": []
     },
     "database": {
+      "tags": []
+    },
+    "api-implementation-database": {
       "tags": []
     }
   }

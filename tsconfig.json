@@ -28,6 +28,9 @@
       ],
       "@new-sample-platform/api-implementation/xml": [
         "libs/api-implementation/xml/src/index.ts"
+      ],
+      "@new-sample-platform/api-implementation/database": [
+        "libs/api-implementation/database/src/index.ts"
       ]
     }
   },
