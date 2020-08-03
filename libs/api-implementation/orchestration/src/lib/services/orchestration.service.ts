@@ -34,6 +34,7 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
     } catch (error) {
       console.error("Error while machine creation:")
       console.debug(error.stack)
+      throw(error)
     }
   }
 
@@ -53,7 +54,7 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
     );
 
     return {
-      os: 'ubuntu',
+      os: 'ubuntu-1804',
       http: true,
       metadata: {
         items: [
@@ -73,6 +74,7 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
     } catch (error) {
       console.error(`Error occured while reseting the machine ${name}`)
       console.debug(error.stack)
+      throw(error)
     }
   }
 
@@ -83,6 +85,7 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
     } catch (error) {
       console.error(`Error occured while starting the machine ${name}`)
       console.debug(error.stack)
+      throw(error)
     }
   }
 
@@ -98,6 +101,7 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
     } catch (error) {
       console.error(`Error occured while stopping machine`);
       console.debug(error.stack)
+      throw(error)
     }
   }
 
@@ -114,6 +118,7 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
     } catch (error) {
       console.error(`Error occured while deleting the machine ${name}`);
       console.debug(error.stack)
+      throw(error)
     }
   }
   
