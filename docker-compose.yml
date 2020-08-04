@@ -1,6 +1,13 @@
 version: '3.1'
 
 services:
+    mongo:
+        image: mongo:4.2.6
+        ports:
+        - '27017:27017'
+        volumes:
+        - ./mongo-volume:/data/
+
     api:
         container_name: main
         build:

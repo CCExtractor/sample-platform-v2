@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 
-import { GithubInteractionsApiModule } from '../../../../libs/github-interactions-api/src'
+import { GithubInteractionsApiModule } from '../../../../libs/github-interactions-api-implementation/src'
 
 @Module({
   imports: [GithubInteractionsApiModule],
