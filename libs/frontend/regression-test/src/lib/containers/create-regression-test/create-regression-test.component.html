@@ -1,0 +1,14 @@
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+  <div>
+    <mat-form-field class="example-form-field">
+      <mat-label>Regression test</mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="value"
+        formControlName="command"
+      />
+    </mat-form-field>
+    <button mat-flat-button color="primary">Primary</button>
+  </div>
+</form>

@@ -55,6 +55,12 @@
     },
     "api-implementation-database": {
       "tags": []
+    },
+    "api-implementation-regression-tests": {
+      "tags": []
+    },
+    "frontend-regression-test": {
+      "tags": []
     }
   }
 }

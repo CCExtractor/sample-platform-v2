@@ -14,12 +14,12 @@ export const connect = () => {
     useCreateIndex: true,
   });
   database = Mongoose.connection;
-  
   database.once("open", async () => {
-    console.log("Connected to database");
+    // tslint:disable-next-line: no-console
+    console.info("Connected to database");
   });
   database.on("error", (err) => {
-    console.log("Error connecting to database");
+    console.error("Error connecting to database");
     // tslint:disable-next-line: no-console
     console.debug(err.stack)
   });

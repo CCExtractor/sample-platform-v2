@@ -4,6 +4,6 @@ import { DatabaseConnectionService } from './services/connection.service'
 @Module({
   controllers: [],
   providers: [DatabaseConnectionService],
-  exports: [],
+  exports: [DatabaseConnectionService],
 })
 export class ApiImplementationDatabaseModule {}

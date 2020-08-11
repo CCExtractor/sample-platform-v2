@@ -12,7 +12,6 @@ export class VMOrchestrationController {
       await this.orchestrationService.createMachine(createMachineDTO.name);
       return `Machine ${createMachineDTO.name} successfuly created`;
     } catch (error) {
-      console.debug(error.stack);
       return `Error while creating the machine`;
     }
   }
