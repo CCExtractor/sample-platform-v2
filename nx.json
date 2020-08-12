@@ -61,6 +61,12 @@
     },
     "frontend-regression-test": {
       "tags": []
+    },
+    "api-implementation-samples": {
+      "tags": []
+    },
+    "frontend-samples": {
+      "tags": []
     }
   }
 }

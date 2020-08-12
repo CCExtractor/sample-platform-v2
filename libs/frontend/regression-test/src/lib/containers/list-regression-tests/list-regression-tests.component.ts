@@ -16,7 +16,6 @@ export class ListRegressionTestsComponent implements OnInit {
     this.getData().subscribe((data: any) => {
       this.dataSource = data
     })
-    console.log(this.dataSource)
   }
 
   ngOnInit(): void { }
