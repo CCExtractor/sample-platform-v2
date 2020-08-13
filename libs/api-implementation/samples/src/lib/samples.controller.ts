@@ -3,23 +3,22 @@ import {
   Post,
   UseInterceptors,
   UploadedFile,
-  Get,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { SamplesService } from './services/samples.service';
 
 @Controller('samples')
 export class SamplesController {
-  constructor() { }
-  
-  @Get()
-  log() {
-    return "OK"
-  }
+  constructor(private service: SamplesService) {}
 
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
   uploadFile(@UploadedFile() file) {
-    console.log(file);
-    return 'OK';
+    try {
+      this.service.writeToBucket(file);
+    } catch (error) {
+      return 'Error while writing the file to the bucket'
+    }
+    return 200
   }
 }

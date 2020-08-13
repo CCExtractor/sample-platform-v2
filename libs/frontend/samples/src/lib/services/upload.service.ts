@@ -7,8 +7,6 @@ import {
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 
-// const url = 'http://localhost:8000/upload';
-
 @Injectable({providedIn: 'root',})
 export class UploadService {
   constructor(private http: HttpClient) {}
@@ -23,18 +21,10 @@ export class UploadService {
       const formData: FormData = new FormData();
       formData.append('file', file, file.name);
 
-      // create a http-post request and pass the form
-      // tell it to report the upload progress
-      // const req = new HttpRequest('POST', url, formData, {
-      //   reportProgress: true,
-      // });
-
       // create a new progress-subject for every file
       const progress = new Subject<number>();
 
       // send the http-request and subscribe for progress-updates
-      
-
       this.http.post('api/samples/upload', formData, { reportProgress: true }).subscribe((event : any) => {
         if (event.type === HttpEventType.UploadProgress) {
           // calculate the progress percentage

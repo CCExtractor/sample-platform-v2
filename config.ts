@@ -4,5 +4,6 @@ export enum AppConfig {
   GITHUB_API_LINK = "https://api.github.com/",
   CCEXTRACTOR_REPO_NAME = "ccextractor",
   CCEXTRACTOR_REPO_OWNER = "zelzhan",
-  MONGO_CONNECTION_STRING = "mongodb://mongo:27017/test"
+  MONGO_CONNECTION_STRING = "mongodb://mongo:27017/test",
+  PATH_TO_MOUNTED_BUCKET = "/path/to/bucket/"
 }

@@ -12,7 +12,7 @@ export class UploadComponent {
   constructor(public dialog: MatDialog, public uploadService: UploadService) {}
 
   public openUploadDialog() {
-    let dialogRef = this.dialog.open(DialogComponent, {
+    this.dialog.open(DialogComponent, {
       width: '50%',
       height: '50%',
     });
