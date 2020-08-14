@@ -84,10 +84,7 @@
               "apps/sample-platform/tsconfig.app.json",
               "apps/sample-platform/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/sample-platform/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/sample-platform/**"]
           }
         },
         "test": {
@@ -122,13 +119,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/sample-platform-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/sample-platform-e2e/**"
-            ]
+            "tsConfig": ["apps/sample-platform-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/sample-platform-e2e/**"]
           }
         }
       }
@@ -146,9 +138,7 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": [
-              "apps/api/src/assets"
-            ]
+            "assets": ["apps/api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -177,10 +167,7 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/api/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/api/**"]
           }
         },
         "test": {
@@ -320,10 +307,7 @@
               "libs/testing/tsconfig.lib.json",
               "libs/testing/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/testing/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/testing/**"]
           }
         },
         "test": {
@@ -380,10 +364,7 @@
               "libs/api-implementation/xml/tsconfig.lib.json",
               "libs/api-implementation/xml/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/api-implementation/xml/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/api-implementation/xml/**"]
           }
         },
         "test": {
@@ -480,6 +461,67 @@
             "tsConfig": "libs/frontend/regression-test/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "libs/frontend/regression-test/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "api-implementation-samples": {
+      "root": "libs/api-implementation/samples",
+      "sourceRoot": "libs/api-implementation/samples/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api-implementation/samples/tsconfig.lib.json",
+              "libs/api-implementation/samples/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-implementation/samples/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api-implementation/samples/jest.config.js",
+            "tsConfig": "libs/api-implementation/samples/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend-samples": {
+      "projectType": "library",
+      "root": "libs/frontend/samples",
+      "sourceRoot": "libs/frontend/samples/src",
+      "prefix": "new-sample-platform",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/frontend/samples/tsconfig.lib.json",
+              "libs/frontend/samples/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/frontend/samples/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/samples/jest.config.js",
+            "tsConfig": "libs/frontend/samples/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/frontend/samples/src/test-setup.ts"
           }
         }
       },

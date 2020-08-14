@@ -37,6 +37,12 @@
       ],
       "@new-sample-platform/frontend/regression-test": [
         "libs/frontend/regression-test/src/index.ts"
+      ],
+      "@new-sample-platform/api-implementation/samples": [
+        "libs/api-implementation/samples/src/index.ts"
+      ],
+      "@new-sample-platform/frontend/samples": [
+        "libs/frontend/samples/src/index.ts"
       ]
     }
   },

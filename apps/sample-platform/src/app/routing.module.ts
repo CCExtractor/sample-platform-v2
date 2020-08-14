@@ -13,6 +13,13 @@ const routes: Routes = [
         (mod) => mod.FrontendRegressionTestModule
       )
   },
+  {
+    path: 'samples',
+    loadChildren: () =>
+      import('@new-sample-platform/frontend/samples').then(
+        (mod) => mod.FrontendSamplesModule
+      )
+  }
 ];
 
 @NgModule({
