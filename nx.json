@@ -67,6 +67,9 @@
     },
     "frontend-samples": {
       "tags": []
+    },
+    "api-implementation-report": {
+      "tags": []
     }
   }
 }
