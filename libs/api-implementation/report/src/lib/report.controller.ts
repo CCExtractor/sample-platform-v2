@@ -3,10 +3,11 @@ import {
   Post,
   UseInterceptors,
   UploadedFiles,
+  Body,
 } from '@nestjs/common';
 
 import { 
-  FilesInterceptor,
+  FilesInterceptor, AnyFilesInterceptor,
 } from '@nestjs/platform-express';
 
 @Controller('report')
@@ -14,9 +15,9 @@ export class ReportController {
   constructor() { }
 
   @Post()
-  @UseInterceptors(FilesInterceptor('files'))
-  async processReport(@UploadedFiles() files) {
-    console.log(files)
+  @UseInterceptors(AnyFilesInterceptor())
+  async processReport(@UploadedFiles() files, @Body() body) {
+    console.log(files, body)
   }
 }
 
