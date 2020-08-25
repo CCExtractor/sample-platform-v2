@@ -70,6 +70,9 @@
     },
     "api-implementation-report": {
       "tags": []
+    },
+    "api-implementation-test-entry": {
+      "tags": []
     }
   }
 }

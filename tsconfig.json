@@ -46,6 +46,9 @@
       ],
       "@new-sample-platform/api-implementation/report": [
         "libs/api-implementation/report/src/index.ts"
+      ],
+      "@new-sample-platform/api-implementation/test-entry": [
+        "libs/api-implementation/test-entry/src/index.ts"
       ]
     }
   },

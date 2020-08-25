@@ -559,6 +559,35 @@
           }
         }
       }
+    },
+    "api-implementation-test-entry": {
+      "root": "libs/api-implementation/test-entry",
+      "sourceRoot": "libs/api-implementation/test-entry/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api-implementation/test-entry/tsconfig.lib.json",
+              "libs/api-implementation/test-entry/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-implementation/test-entry/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api-implementation/test-entry/jest.config.js",
+            "tsConfig": "libs/api-implementation/test-entry/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
