@@ -14,6 +14,7 @@ export class TestEntryController {
       return await this.service.create(
         testEntryDTO.category,
         testEntryDTO.command,
+        testEntryDTO.sample,
         files
       );
     } catch (error) {

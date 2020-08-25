@@ -1,17 +1,29 @@
 import { Injectable } from '@nestjs/common';
-import { TestEntryModel } from '../../../../models/regression-tests/test-entry.models';
+import { TestEntryModel } from '../../../../models/test-entries/test-entry.models';
 
 @Injectable()
 export class TestEntryService {
   async getAll() {
-    return await TestEntryModel.find({});
+    try {
+    } catch (error) {
+      console.error('Error while fetching the test entries');
+      // tslint:disable-next-line: no-console
+      console.debug(error.stack);
+      return await TestEntryModel.find({});
+    }
   }
 
-  async create(category: string, new_command: string, files: Buffer[]) {
+  async create(
+    category: string,
+    new_command: string,
+    sample: string,
+    files: Buffer[]
+  ) {
     try {
       return await TestEntryModel.create({
         command: new_command,
         category: category,
+        sample: sample,
         correctFiles: files,
       });
     } catch (error) {
