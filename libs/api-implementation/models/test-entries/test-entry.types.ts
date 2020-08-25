@@ -4,6 +4,7 @@ export interface ITestEntry {
   category: string;
   correctFiles: Buffer[];
   command: string;
+  sample: string;
   dateOfEntry?: Date;
   lastUpdated?: Date;
 }

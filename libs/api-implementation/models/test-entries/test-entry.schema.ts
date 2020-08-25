@@ -24,6 +24,10 @@ const TestEntrySchema = new Schema({
     type: [Buffer],
     required: true,
   },
+  sample: {
+    type: String,
+    required: true
+  },
   command: {
     type: String,
     required: true,
