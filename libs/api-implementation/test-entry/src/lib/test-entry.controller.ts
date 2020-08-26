@@ -10,13 +10,10 @@ export class TestEntryController {
   @UseInterceptors(AnyFilesInterceptor())
   @Post()
   async createRegressionTest(@UploadedFiles() files, @Body() testEntryDTO: TestEntryDTO) {
+    console.log("files", files)
+    console.log("===========================")
+    console.log("Payload", testEntryDTO)
     try {
-      return await this.service.create(
-        testEntryDTO.category,
-        testEntryDTO.command,
-        testEntryDTO.sample,
-        files
-      );
     } catch (error) {
       return `Error creating the test entry`;
     }

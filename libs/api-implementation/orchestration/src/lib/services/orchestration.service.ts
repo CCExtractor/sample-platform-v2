@@ -70,7 +70,6 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
   async reset(name: string) {
     try {
       const response = await this.machines[name].getInstance().reset();
-      console.log(response);
     } catch (error) {
       console.error(`Error occured while reseting the machine ${name}`)
       console.debug(error.stack)

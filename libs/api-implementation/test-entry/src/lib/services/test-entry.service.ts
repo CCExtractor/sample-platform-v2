@@ -5,11 +5,11 @@ import { TestEntryModel } from '../../../../models/test-entries/test-entry.model
 export class TestEntryService {
   async getAll() {
     try {
+      return await TestEntryModel.find({});
     } catch (error) {
       console.error('Error while fetching the test entries');
       // tslint:disable-next-line: no-console
       console.debug(error.stack);
-      return await TestEntryModel.find({});
     }
   }
 

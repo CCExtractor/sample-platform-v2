@@ -19,6 +19,13 @@ const routes: Routes = [
       import('@new-sample-platform/frontend/samples').then(
         (mod) => mod.FrontendSamplesModule
       )
+  },
+  {
+    path: 'test-entry',
+    loadChildren: () =>
+      import('@new-sample-platform/frontend/test-entry').then(
+        (mod) => mod.FrontendTestEntryModule
+      )
   }
 ];
 

@@ -1,0 +1,69 @@
+<h1>Create Test Entry</h1>
+
+<form [formGroup]="myForm" >
+  <div class="form-group">
+    <label for="command">Name</label>
+    <input
+      formControlName="command"
+      id="command"
+      type="text"
+      class="form-control"
+    />
+    <div
+      *ngIf="f.command.touched && f.command.invalid"
+      class="alert alert-danger"
+    >
+      <div *ngIf="f.command.errors.required">Command is required.</div>
+      <div *ngIf="f.command.errors.minlength">
+        Command should be 3 character.
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="form-group">
+    <mat-form-field appearance="fill" class="category" >
+      <mat-label>Category</mat-label>
+      <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" name="food">
+        <mat-option *ngFor="let category of categories" [value]="category.value">
+          {{category.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <div class="form-group">
+    <label for="sample">Sample</label>
+    <input
+      placeholder="select sample"
+      formControlName="sample"
+      id="sample"
+      type="text"
+      class="form-control"
+      [matAutocomplete]="auto"
+    />
+
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+
+  </div>
+    <div
+      *ngIf="f.sample.touched && f.sample.invalid"
+      class="alert alert-danger"
+    >
+      <div *ngIf="f.sample.errors.required">Sample is required.</div>
+    </div>
+  <div>
+
+    <button mat-raised-button color="success"  (click)="openInput()">Select Files to Upload</button>
+    <input id="uploadFile" hidden type="file" (change)="fileAdded($event)" name="file">
+
+  </div>
+
+  <button mat-raised-button (click)="submitToService()">Submit</button>
+</form>

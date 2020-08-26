@@ -588,6 +588,38 @@
           }
         }
       }
+    },
+    "frontend-test-entry": {
+      "projectType": "library",
+      "root": "libs/frontend/test-entry",
+      "sourceRoot": "libs/frontend/test-entry/src",
+      "prefix": "frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/frontend/test-entry/tsconfig.lib.json",
+              "libs/frontend/test-entry/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/frontend/test-entry/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/test-entry/jest.config.js",
+            "tsConfig": "libs/frontend/test-entry/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/frontend/test-entry/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {
