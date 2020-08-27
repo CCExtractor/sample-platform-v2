@@ -3,6 +3,7 @@ import { TestEntryModel } from '../../../../models/test-entries/test-entry.model
 
 @Injectable()
 export class TestEntryService {
+ 
   async getAll() {
     try {
       return await TestEntryModel.find({});
@@ -17,14 +18,23 @@ export class TestEntryService {
     category: string,
     new_command: string,
     sample: string,
-    files: Buffer[]
+    files: any[]
   ) {
+    const correctFiles = []
+
+    files.forEach(file => {
+      correctFiles.push({
+        filename: file.originalname,
+        buffer: file.buffer
+      })
+    })
+
     try {
       return await TestEntryModel.create({
         command: new_command,
         category: category,
         sample: sample,
-        correctFiles: files,
+        correctFiles: correctFiles,
       });
     } catch (error) {
       console.error('Error while creating the test entry');

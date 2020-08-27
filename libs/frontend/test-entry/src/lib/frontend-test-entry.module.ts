@@ -13,8 +13,11 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { MatSelectModule } from '@angular/material/select'
 import { MatAutocompleteModule } from '@angular/material/autocomplete'
 
+import { MatCardModule } from '@angular/material/card'
+
 @NgModule({
   imports: [
+    MatCardModule,
     MatAutocompleteModule,
     MatSelectModule,
     MatIconModule,

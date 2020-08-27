@@ -21,12 +21,12 @@ const TestEntrySchema = new Schema({
     required: true,
   },
   correctFiles: {
-    type: [Buffer],
+    type: [Object],
     required: true,
   },
   sample: {
     type: String,
-    required: true
+    required: true,
   },
   command: {
     type: String,

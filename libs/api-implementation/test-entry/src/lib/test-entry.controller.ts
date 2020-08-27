@@ -1,4 +1,11 @@
-import { Controller, Post, Body, Get, UseInterceptors, UploadedFiles } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  UseInterceptors,
+  UploadedFiles,
+} from '@nestjs/common';
 import { TestEntryDTO } from './dto/test-entry.dto';
 import { TestEntryService } from './services/test-entry.service';
 import { AnyFilesInterceptor } from '@nestjs/platform-express';
@@ -9,11 +16,17 @@ export class TestEntryController {
 
   @UseInterceptors(AnyFilesInterceptor())
   @Post()
-  async createRegressionTest(@UploadedFiles() files, @Body() testEntryDTO: TestEntryDTO) {
-    console.log("files", files)
-    console.log("===========================")
-    console.log("Payload", testEntryDTO)
+  async createTestEntry(
+    @UploadedFiles() files,
+    @Body() testEntryDTO: TestEntryDTO
+  ) {
     try {
+      this.service.create(
+        testEntryDTO.category,
+        testEntryDTO.command,
+        testEntryDTO.sample,
+        files
+      );
     } catch (error) {
       return `Error creating the test entry`;
     }

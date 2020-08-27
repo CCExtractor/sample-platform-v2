@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: 'root' })
 export class UploadService {
@@ -10,6 +10,6 @@ export class UploadService {
   }
 
   public getSamples() {
-    return this.http.get('api/samples')
+    return this.http.get('api/samples');
   }
 }

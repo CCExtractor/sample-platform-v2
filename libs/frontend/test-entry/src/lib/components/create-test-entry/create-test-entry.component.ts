@@ -39,7 +39,7 @@ export class CreateTestEntryComponent implements OnInit {
   public options: string[] = [];
   public filteredOptions: Observable<string[]>;
 
-  private selectedFiles: File[] = [];
+  public selectedFiles: File[] = [];
   private formD: FormData;
 
   constructor(private service: UploadService) {}

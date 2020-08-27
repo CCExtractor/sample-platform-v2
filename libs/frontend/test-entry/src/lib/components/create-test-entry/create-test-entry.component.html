@@ -59,7 +59,7 @@
       <div *ngIf="f.sample.errors.required">Sample is required.</div>
     </div>
   <div>
-
+    <div *ngFor="let f of selectedFiles"> {{f.name}}</div>
     <button mat-raised-button color="success"  (click)="openInput()">Select Files to Upload</button>
     <input id="uploadFile" hidden type="file" (change)="fileAdded($event)" name="file">
 
