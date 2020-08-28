@@ -5,24 +5,24 @@ import { AppController } from './app.controller';
 import { VMOrchestrationModule } from '../../../../libs/api-implementation/orchestration/src';
 import { ApiImplementationRegressionTestsModule } from '@new-sample-platform/api-implementation/regression-tests';
 import { ApiImplementationDatabaseModule } from '@new-sample-platform/api-implementation/database';
-import { ApiImplementationSamplesModule } from '@new-sample-platform/api-implementation/samples'
-import { ApiImplementationReportModule } from '@new-sample-platform/api-implementation/report'
-import { ApiImplementationTestEntryModule } from '@new-sample-platform/api-implementation/test-entry'
+import { ApiImplementationSamplesModule } from '@new-sample-platform/api-implementation/samples';
+import { ApiImplementationReportModule } from '@new-sample-platform/api-implementation/report';
+import { ApiImplementationTestEntryModule } from '@new-sample-platform/api-implementation/test-entry';
+import { ApiImplementationXmlModule } from '@new-sample-platform/api-implementation/xml';
 import { HttpAdapterHost } from '@nestjs/core';
 
 @Module({
   imports: [
     HttpAdapterHost,
     VMOrchestrationModule,
+    ApiImplementationXmlModule,
     ApiImplementationTestEntryModule,
     ApiImplementationReportModule,
     ApiImplementationRegressionTestsModule,
     ApiImplementationDatabaseModule,
-    ApiImplementationSamplesModule
+    ApiImplementationSamplesModule,
   ],
   controllers: [AppController],
   providers: [],
 })
-export class AppModule {  
-}
-
+export class AppModule {}

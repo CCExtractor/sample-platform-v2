@@ -9,10 +9,14 @@ import {
 import { TestEntryDTO } from './dto/test-entry.dto';
 import { TestEntryService } from './services/test-entry.service';
 import { AnyFilesInterceptor } from '@nestjs/platform-express';
+import { XmlGenerationService } from '@new-sample-platform/api-implementation/xml';
 
 @Controller('test-entry')
 export class TestEntryController {
-  constructor(private service: TestEntryService) {}
+  constructor(
+    private service: TestEntryService,
+    private xmlService: XmlGenerationService
+  ) {}
 
   @UseInterceptors(AnyFilesInterceptor())
   @Post()
@@ -21,12 +25,13 @@ export class TestEntryController {
     @Body() testEntryDTO: TestEntryDTO
   ) {
     try {
-      this.service.create(
+      await this.service.create(
         testEntryDTO.category,
         testEntryDTO.command,
         testEntryDTO.sample,
         files
       );
+      await this.xmlService.generateXML();
     } catch (error) {
       return `Error creating the test entry`;
     }
