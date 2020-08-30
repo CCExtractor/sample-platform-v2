@@ -68,5 +68,6 @@ mkdir results
 mkdir report
 
 cd /root/tester
-sudo /root/tester/ccextractortester --entries "/root/bucket/tests.xml" --executable "/root/ccextractor" --tempfolder "/root/tmpFiles" --timeout 3000 --resultfolder "/root/results" --samplefolder "/root/bucket/samples" --reportfolder "/root/report"
+sudo /root/tester/ccextractortester --method Server --entries "/root/bucket/tests.xml" --executable "/root/ccextractor" --tempfolder "/root/tmpFiles" --timeout 3000 --resultfolder "/root/results" --samplefolder "/root/bucket/samples" --reportfolder "/root/report" -u "EXTERNAL_IP/api/report?type=GITHUB_EVENT&id=EVENT_IDENTIFICATOR"
+
 

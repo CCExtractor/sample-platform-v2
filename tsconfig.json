@@ -52,6 +52,12 @@
       ],
       "@new-sample-platform/frontend/test-entry": [
         "libs/frontend/test-entry/src/index.ts"
+      ],
+      "@new-sample-platform/api-implementation/test-run": [
+        "libs/api-implementation/test-run/src/index.ts"
+      ],
+      "@new-sample-platform/frontend/test-runs": [
+        "libs/frontend/test-runs/src/index.ts"
       ]
     }
   },

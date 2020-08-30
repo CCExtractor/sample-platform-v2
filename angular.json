@@ -620,6 +620,67 @@
           "style": "scss"
         }
       }
+    },
+    "api-implementation-test-run": {
+      "root": "libs/api-implementation/test-run",
+      "sourceRoot": "libs/api-implementation/test-run/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api-implementation/test-run/tsconfig.lib.json",
+              "libs/api-implementation/test-run/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-implementation/test-run/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api-implementation/test-run/jest.config.js",
+            "tsConfig": "libs/api-implementation/test-run/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend-test-runs": {
+      "projectType": "library",
+      "root": "libs/frontend/test-runs",
+      "sourceRoot": "libs/frontend/test-runs/src",
+      "prefix": "frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/frontend/test-runs/tsconfig.lib.json",
+              "libs/frontend/test-runs/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/frontend/test-runs/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/test-runs/jest.config.js",
+            "tsConfig": "libs/frontend/test-runs/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/frontend/test-runs/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

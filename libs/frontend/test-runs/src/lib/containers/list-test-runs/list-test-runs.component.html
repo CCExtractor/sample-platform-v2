@@ -1,0 +1,44 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <mat-header-cell *matHeaderCellDef> PR/Commit </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.type }} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Success </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.success }} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <mat-header-cell *matHeaderCellDef>
+      Date of Entry
+    </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      <a
+        [href]="
+          element.type === 'Commit'
+            ? 'https://github.com/CCExtractor/ccextractor/commit/' +
+              element.githubNumber
+            : 'https://github.com/CCExtractor/ccextractor/pull/' +
+              element.githubNumber
+        "
+      >
+        {{ element.dateOfEntry }}
+      </a></mat-cell
+    >
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <mat-header-cell *matHeaderCellDef> Number of used tests </mat-header-cell>
+    <mat-cell *matCellDef="let element">
+      {{ element.results.length }}
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

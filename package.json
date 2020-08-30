@@ -50,6 +50,7 @@
     "@nrwl/angular": "9.3.0",
     "@octokit/auth-app": "^2.4.7",
     "bootstrap": "^4.4.0",
+    "class-validator": "^0.12.2",
     "connect-multiparty": "^2.2.0",
     "core-js": "^2.5.4",
     "crypto": "^1.0.1",

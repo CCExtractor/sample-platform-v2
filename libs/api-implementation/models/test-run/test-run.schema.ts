@@ -8,18 +8,18 @@ const TestRunSchema = new Schema({
 
   type: {
     type: String,
-    enum: ['Commit', 'Pull Request'],
+    enum: ['Commit', 'PullRequest'],
     required: true,
   },
 
+  success: {
+    type: Boolean,
+    required: true,
+  },
   results: [
     {
       id: {
         type: Number,
-        required: true,
-      },
-      success: {
-        type: Boolean,
         required: true,
       },
       runTime: Number,

@@ -76,6 +76,12 @@
     },
     "frontend-test-entry": {
       "tags": []
+    },
+    "api-implementation-test-run": {
+      "tags": []
+    },
+    "frontend-test-runs": {
+      "tags": []
     }
   }
 }
