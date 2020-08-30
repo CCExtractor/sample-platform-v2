@@ -74,7 +74,7 @@ export class XmlGenerationService {
         compare: {
           file: {
             '@ignore': 'false',
-            '@id': entry.sample,
+            '@id': entry._id,
             correct: 'wrong.txt',
             expected:
               entry.sample.split('.')[0] +

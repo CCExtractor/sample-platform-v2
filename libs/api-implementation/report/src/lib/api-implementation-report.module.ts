@@ -2,11 +2,13 @@ import { Module, HttpModule } from '@nestjs/common';
 import { ReportController } from './report.controller';
 
 import { HttpAdapterHost } from '@nestjs/core';
+import { ReportService } from './services/report.service';
+import { ApiImplementationDatabaseModule } from '@new-sample-platform/api-implementation/database'
 
 @Module({
-  imports: [HttpAdapterHost],
+  imports: [HttpAdapterHost, ApiImplementationDatabaseModule],
   controllers: [ReportController],
-  providers: [],
+  providers: [ReportService],
   exports: [],
 })
 export class ApiImplementationReportModule {}

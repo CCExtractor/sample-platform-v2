@@ -2,7 +2,7 @@ import { Document, Model } from "mongoose";
 
 export interface ITestEntry {
   category: string;
-  correctFiles: Buffer[];
+  correctFiles: Object[];
   command: string;
   sample: string;
   dateOfEntry?: Date;
