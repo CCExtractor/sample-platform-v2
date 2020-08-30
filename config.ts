@@ -5,5 +5,6 @@ export enum AppConfig {
   CCEXTRACTOR_REPO_NAME = "ccextractor",
   CCEXTRACTOR_REPO_OWNER = "zelzhan",
   MONGO_CONNECTION_STRING = "mongodb://mongo:27017/test",
-  PATH_TO_MOUNTED_BUCKET = "/path/to/bucket/"
+  PATH_TO_MOUNTED_BUCKET = "/path/to/bucket/",
+  EXTERNAL_IP = "http://192.168.0.1:2000"
 }

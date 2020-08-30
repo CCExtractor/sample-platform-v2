@@ -37,7 +37,7 @@
   <div class="form-group">
     <label for="sample">Sample</label>
     <input
-      placeholder="select sample"
+      placeholder="select from existing samples"
       formControlName="sample"
       id="sample"
       type="text"
@@ -60,7 +60,7 @@
     </div>
   <div>
     <div *ngFor="let f of selectedFiles"> {{f.name}}</div>
-    <button mat-raised-button color="success"  (click)="openInput()">Select Files to Upload</button>
+    <button mat-raised-button color="success"  (click)="openInput()">Select correct output files for this sample</button>
     <input id="uploadFile" hidden type="file" (change)="fileAdded($event)" name="file">
 
   </div>
