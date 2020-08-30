@@ -9,12 +9,14 @@ import { ApiImplementationSamplesModule } from '@new-sample-platform/api-impleme
 import { ApiImplementationReportModule } from '@new-sample-platform/api-implementation/report';
 import { ApiImplementationTestEntryModule } from '@new-sample-platform/api-implementation/test-entry';
 import { ApiImplementationXmlModule } from '@new-sample-platform/api-implementation/xml';
+import { ApiImplementationTestRunModule } from '@new-sample-platform/api-implementation/test-run';
 import { HttpAdapterHost } from '@nestjs/core';
 
 @Module({
   imports: [
     HttpAdapterHost,
     VMOrchestrationModule,
+    ApiImplementationTestRunModule,
     ApiImplementationXmlModule,
     ApiImplementationTestEntryModule,
     ApiImplementationReportModule,

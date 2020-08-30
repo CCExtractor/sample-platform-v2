@@ -35,14 +35,15 @@ export class ReportService {
   async createResult(
     test_id: number,
     isSuccess: boolean,
-    githubNumber: number
+    githubNumber: string,
+    type: string
   ) {
     try {
       const currentTestRun = await this.getTestRun(githubNumber);
       if (currentTestRun) {
         await this.addToTestRun(currentTestRun, test_id, isSuccess);
       } else {
-        await this.createTestRun(githubNumber, test_id, isSuccess);
+        await this.createTestRun(githubNumber, test_id, isSuccess, type);
       }
     } catch (error) {
       console.error('Error while creating the rest run instance');
@@ -56,7 +57,7 @@ export class ReportService {
     test_id: number,
     runTime: number,
     exitCode: number,
-    githubNumber: number
+    githubNumber: string
   ) {
     try {
       const currentTestRun = await this.getTestRun(githubNumber);
@@ -99,12 +100,14 @@ export class ReportService {
   }
 
   private async createTestRun(
-    githubNumber: number,
+    githubNumber: string,
     test_id: number,
-    isSuccess: boolean
+    isSuccess: boolean,
+    type: string
   ) {
     await TestRunModel.create({
       githubNumber: githubNumber,
+      type: type,
       results: [
         {
           id: test_id,

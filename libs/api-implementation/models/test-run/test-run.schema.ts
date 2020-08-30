@@ -2,9 +2,16 @@ import { Schema } from 'mongoose';
 
 const TestRunSchema = new Schema({
   githubNumber: {
-    type: Number,
+    type: String,
     required: true,
   },
+
+  type: {
+    type: String,
+    enum: ['Commit', 'Pull Request'],
+    required: true,
+  },
+
   results: [
     {
       id: {

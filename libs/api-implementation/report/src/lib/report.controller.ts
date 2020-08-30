@@ -4,6 +4,7 @@ import {
   UseInterceptors,
   UploadedFiles,
   Body,
+  Query,
 } from '@nestjs/common';
 
 import { AnyFilesInterceptor } from '@nestjs/platform-express';
@@ -15,10 +16,12 @@ export class ReportController {
 
   @Post()
   @UseInterceptors(AnyFilesInterceptor())
-  async processReport(@UploadedFiles() files: any[], @Body() body) {
+  async processReport(
+    @UploadedFiles() files: any[],
+    @Query() query,
+    @Body() body
+  ) {
     try {
-      const githubNumberPlaceholder = 42;
-
       if (body.type === 'upload') {
         const isSuccess = await this.service.fileIsCorrect(
           files[0],
@@ -27,14 +30,15 @@ export class ReportController {
         await this.service.createResult(
           Number(body.test_id),
           isSuccess,
-          githubNumberPlaceholder
+          query.id,
+          query.type
         );
       } else if (body.type === 'finish') {
         await this.service.updateResult(
           Number(body.test_id),
           Number(body.runTime),
           Number(body.exitCode),
-          githubNumberPlaceholder
+          query.id
         );
       }
     } catch (error) {
