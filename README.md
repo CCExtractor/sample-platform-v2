@@ -26,7 +26,9 @@
     4. [Mount existing bucket](#4-mount-existing-bucket)
     5. [Access the bucket](#5-access-the-bucket)
 11. [Upload credentials as a metadata](#upload-credentials-as-a-metadata-to-the-project-on-gcloud)
-12. [Contact](#any-questions-or-help-needed?)
+12. [Deploy](#deploy)
+13. [Contact](#any-questions-or-help-needed)
+
 
 ## **Understanding the structure of project**
 
@@ -284,6 +286,20 @@ gcloud compute project-info describe
 ```
 
 After uploading the credentials as a metadata to the project, the startup script will handle everything else for you. 
+
+## Deploy:
+
+1. [Upload credentials as a metadata](#upload-credentials-as-a-metadata-to-the-project-on-gcloud).
+2. Go to the gcloud page, [select](https://console.cloud.google.com/compute/images?_ga=2.34955425.1086928790.1599293067-1808215545.1594364842&_gac=1.254012092.1595765152.EAIaIQobChMI5Z-NhNTq6gIVQdiyCh2Kpgv3EAAYASAAEgK_Y_D_BwE) the image that suits your needs and click `create instance button`
+3. Then go to the [compute engine page](https://console.cloud.google.com/compute/instances) and ssh to your VM instance. 
+4. [Mount the bucket](#how-to-mount-bucket-google-cloud-storage)
+5. Clone this repository
+6. Run the docker container with the database. 
+7. Run `ng build sample-platform --watch` to compile frontend application. [See the deployment of angular apps for more details](https://angular.io/guide/deployment)
+8. Run `npm run build`
+9. Run `node dist/apps/api/main.js` to serve the backend in production
+
+**Note:** it is much better to properly configure nginx to deploy it much easier. Please refer to https://github.com/zelzhan/new-sample-platform/issues/32 
 
 # Any questions or help needed?
 
