@@ -12,14 +12,17 @@ const TestRunSchema = new Schema({
     required: true,
   },
 
-  success: {
+  succeed: {
     type: Boolean,
-    required: true,
   },
   results: [
     {
       id: {
         type: Number,
+        required: true,
+      },
+      success: {
+        type: Boolean,
         required: true,
       },
       runTime: Number,

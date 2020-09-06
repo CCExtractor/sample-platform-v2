@@ -12,6 +12,10 @@ export class ListTestRunsComponent implements OnInit {
 
   constructor(private http: HttpClient) {
     this.getData().subscribe((data: any) => {
+      data = data.map((entry) => {
+        entry.success = entry.results.every((obj) => obj.success);
+        return entry;
+      });
       this.dataSource = data;
     });
   }

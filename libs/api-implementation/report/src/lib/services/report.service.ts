@@ -108,9 +108,9 @@ export class ReportService {
     await TestRunModel.create({
       githubNumber: githubNumber,
       type: type,
-      success: isSuccess,
       results: [
         {
+          success: isSuccess,
           id: test_id,
         },
       ],
