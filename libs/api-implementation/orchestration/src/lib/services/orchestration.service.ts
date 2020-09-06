@@ -22,7 +22,7 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
   constructor(compute: Compute) {
     this.compute = compute;
     //TODO: put the zone in config file
-    this.zone = this.compute.zone('us-central1-c');
+    this.zone = this.compute.zone(AppConfig.VM_ZONE);
     this.numOfTotalInstances = 0;
     this.runningMachines = [];
     this.machines = {};
