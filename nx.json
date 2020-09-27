@@ -67,6 +67,21 @@
     },
     "frontend-samples": {
       "tags": []
+    },
+    "api-implementation-report": {
+      "tags": []
+    },
+    "api-implementation-test-entry": {
+      "tags": []
+    },
+    "frontend-test-entry": {
+      "tags": []
+    },
+    "api-implementation-test-run": {
+      "tags": []
+    },
+    "frontend-test-runs": {
+      "tags": []
     }
   }
 }

@@ -5,10 +5,11 @@ import { Injectable } from '@nestjs/common';
 import { HashTable } from '../../../../util/src/lib/interfaces/hashtable-interface';
 import { VM } from '../../../../util/src/lib/vm.impl';
 import { Status } from '../../../../util/src/lib/interfaces/status-enum';
-import { AppConfig } from '../../../../../../config'
+import { AppConfig } from '../../../../../../config';
 import * as fs from 'fs';
 import * as doAsync from 'doasync';
-import * as path from 'path'; 
+import * as path from 'path';
+import { Type } from '../dto/create-machine.dto';
 
 @Injectable()
 export class VMOrchestrationService implements VMOrchestrationInterface {
@@ -20,39 +21,48 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
 
   constructor(compute: Compute) {
     this.compute = compute;
-    this.zone = this.compute.zone('us-central1-c');
+    //TODO: put the zone in config file
+    this.zone = this.compute.zone(AppConfig.VM_ZONE);
     this.numOfTotalInstances = 0;
     this.runningMachines = [];
     this.machines = {};
   }
 
-  async createMachine(name: string) {
+  async createMachine(name: string, type: Type) {
     try {
-      const [vm, operation] = await this.createVM(name);
+      const [vm, operation] = await this.createVM(name, type);
       this.runningMachines.push(vm);
       this.numOfTotalInstances++;
     } catch (error) {
-      console.error("Error while machine creation:")
-      console.debug(error.stack)
-      throw(error)
+      console.error('Error while machine creation:');
+      console.debug(error.stack);
+      throw error;
     }
   }
 
-  async createVM(name: string) {
+  async createVM(name: string, type: Type) {
     let vm, operation;
-    const config = await this.getConfigFile();
+    const config = await this.getConfigFile(name, type);
     [vm, operation] = await this.zone.createVM(name, config);
     this.machines[name] = new VM(name, Status.Running, vm);
     return [this.machines[name], operation];
   }
 
-  private async getConfigFile() {
-    
-    const script = await doAsync(fs).readFile(
+  private async getConfigFile(name: string, type: Type) {
+    let script = await doAsync(fs).readFile(
       //TODO make it more flexible
       path.resolve(__dirname, `../../../${AppConfig.EXECUTABLE_SCRIPT}`)
     );
 
+    script = script.toString()
+
+    script = script.replace(/EXTERNAL_IP/g, AppConfig.EXTERNAL_IP)
+    script = script.replace(/GITHUB_EVENT/g, type)
+    script = script.replace(/EVENT_IDENTIFICATOR/g, name)
+
+    console.log("HIBLJDAD" + script);
+    
+    return 
     return {
       os: 'ubuntu-1804',
       http: true,
@@ -69,12 +79,11 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
 
   async reset(name: string) {
     try {
-      const response = await this.machines[name].getInstance().reset();
-      console.log(response);
+      await this.machines[name].getInstance().reset();
     } catch (error) {
-      console.error(`Error occured while reseting the machine ${name}`)
-      console.debug(error.stack)
-      throw(error)
+      console.error(`Error occured while reseting the machine ${name}`);
+      console.debug(error.stack);
+      throw error;
     }
   }
 
@@ -83,9 +92,9 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
       await this.machines[name].getInstance().start();
       this.runningMachines.push(this.machines[name]);
     } catch (error) {
-      console.error(`Error occured while starting the machine ${name}`)
-      console.debug(error.stack)
-      throw(error)
+      console.error(`Error occured while starting the machine ${name}`);
+      console.debug(error.stack);
+      throw error;
     }
   }
 
@@ -100,8 +109,8 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
       }
     } catch (error) {
       console.error(`Error occured while stopping machine`);
-      console.debug(error.stack)
-      throw(error)
+      console.debug(error.stack);
+      throw error;
     }
   }
 
@@ -117,11 +126,11 @@ export class VMOrchestrationService implements VMOrchestrationInterface {
       await this.machines[name].getInstance().delete();
     } catch (error) {
       console.error(`Error occured while deleting the machine ${name}`);
-      console.debug(error.stack)
-      throw(error)
+      console.debug(error.stack);
+      throw error;
     }
   }
-  
+
   getNumberOfRunningInstances(): number {
     return this.runningMachines.length;
   }

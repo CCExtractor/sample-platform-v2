@@ -9,10 +9,12 @@ import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { UploadService } from './services/upload.service';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   imports: [
     CommonModule,
+    MatCardModule,
     RoutingModule,
     MatButtonModule,
     MatDialogModule,
@@ -21,6 +23,6 @@ import { UploadService } from './services/upload.service';
     MatProgressBarModule,
   ],
   declarations: [UploadComponent, DialogComponent],
-  providers: [UploadService]
+  providers: [UploadService],
 })
 export class FrontendSamplesModule {}

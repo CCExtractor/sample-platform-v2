@@ -24,9 +24,19 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "apps/sample-platform/src/styles.css"
+              "apps/sample-platform/src/styles.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/regular.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
+              "node_modules/angular-bootstrap-md/assets/scss/bootstrap/bootstrap.scss",
+              "node_modules/angular-bootstrap-md/assets/scss/mdb.scss",
+              "node_modules/animate.css/animate.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/chart.js/dist/Chart.js",
+              "node_modules/hammerjs/hammer.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -522,6 +532,157 @@
             "tsConfig": "libs/frontend/samples/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "libs/frontend/samples/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "api-implementation-report": {
+      "root": "libs/api-implementation/report",
+      "sourceRoot": "libs/api-implementation/report/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api-implementation/report/tsconfig.lib.json",
+              "libs/api-implementation/report/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-implementation/report/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api-implementation/report/jest.config.js",
+            "tsConfig": "libs/api-implementation/report/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-implementation-test-entry": {
+      "root": "libs/api-implementation/test-entry",
+      "sourceRoot": "libs/api-implementation/test-entry/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api-implementation/test-entry/tsconfig.lib.json",
+              "libs/api-implementation/test-entry/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-implementation/test-entry/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api-implementation/test-entry/jest.config.js",
+            "tsConfig": "libs/api-implementation/test-entry/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend-test-entry": {
+      "projectType": "library",
+      "root": "libs/frontend/test-entry",
+      "sourceRoot": "libs/frontend/test-entry/src",
+      "prefix": "frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/frontend/test-entry/tsconfig.lib.json",
+              "libs/frontend/test-entry/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/frontend/test-entry/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/test-entry/jest.config.js",
+            "tsConfig": "libs/frontend/test-entry/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/frontend/test-entry/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "api-implementation-test-run": {
+      "root": "libs/api-implementation/test-run",
+      "sourceRoot": "libs/api-implementation/test-run/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/api-implementation/test-run/tsconfig.lib.json",
+              "libs/api-implementation/test-run/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-implementation/test-run/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api-implementation/test-run/jest.config.js",
+            "tsConfig": "libs/api-implementation/test-run/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend-test-runs": {
+      "projectType": "library",
+      "root": "libs/frontend/test-runs",
+      "sourceRoot": "libs/frontend/test-runs/src",
+      "prefix": "frontend",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/frontend/test-runs/tsconfig.lib.json",
+              "libs/frontend/test-runs/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/frontend/test-runs/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/frontend/test-runs/jest.config.js",
+            "tsConfig": "libs/frontend/test-runs/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/frontend/test-runs/src/test-setup.ts"
           }
         }
       },
